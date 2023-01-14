@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+
+  cloudflare-dns:
+    image: bpmbee/ddclient:latest
+    security_opt:
+      - "no-new-privileges:true"
+    environment:
+      - DDSERVER=api.dynu.com
+      - DDUSERNAME=USERNAME
+      - DDPASSWORD=PASSWORD
+      - DOMAINS=my.example.com,another.example.com
+      - INTERVAL=60
+    restart: unless-stopped
